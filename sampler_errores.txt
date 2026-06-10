@@ -1,0 +1,140 @@
+ LOG DE RECTIFICACION — pipeline_rectify.py
+===========================================================================
+Target nivel p: -28.0 dBFS  |  Tolerancia: +/-1.5dB  |  Boost max: +8.0dB
+KNR Plus: 10dB adicional si HF > -38.0dB
+Trim reemergencia: fade-out coseno de 800ms en punto de re-emergencia
+===========================================================================
+
+Archivo                   Nota  RMS_orig  Gain_apl  KNR+  Trim Estado                    Flags residuales
+------------------------------------------------------------------------------------------------------------------------
+C_1_p.wav                   C1    -24.0      -4.04      -   @24.5s  OK                        FLUTTER_MODERADO (8.0dB ptp)
+C_2_p_RR1.wav               C2    -29.3      +0.00      -        -  FLUTTER_PENDIENTE         FLUTTER_CRITICO (14.7dB ptp)
+C_2_p_RR2.wav               C2    -29.9      +1.91      -        -  OK                        FLUTTER_MODERADO (6.0dB ptp)
+C_3_p_RR1.wav               C3    -26.3      -1.70      -        -  OK                        FLUTTER_MODERADO (5.7dB ptp)
+C_3_p_RR2.wav               C3    -31.4      +3.44      -        -  OK                        FLUTTER_MODERADO (5.3dB ptp)
+C_3_p_RR3.wav               C3    -29.1      +0.00      -        -  OK                        FLUTTER_MODERADO (5.4dB ptp)
+C_4_p_RR1.wav               C4    -22.2      -5.79      -   @12.3s  FLUTTER_PENDIENTE         FLUTTER_CRITICO (17.8dB ptp)
+C_4_p_RR2.wav               C4    -23.2      -4.79      -        -  FLUTTER_PENDIENTE         FLUTTER_CRITICO (14.5dB ptp)
+C_4_p_RR3.wav               C4    -22.5      -5.51      -        -  FLUTTER_PENDIENTE         FLUTTER_CRITICO (23.0dB ptp)
+B_0_p.wav                   B0    -27.0      +0.00      -        -  OK                        OK
+C_4_p.wav                   C4    -28.0      +0.00      -        -  FLUTTER_PENDIENTE         FLUTTER_CRITICO (16.1dB ptp)
+C_5_p_RR1.wav               C5    -28.0      +0.00     Si        -  OK                        FLUTTER_MODERADO (7.7dB ptp)
+C_5_p_RR2.wav               C5    -26.7      +0.00      -        -  FLUTTER_PENDIENTE         FLUTTER_CRITICO (13.2dB ptp)
+C_5_p_RR3.wav               C5    -28.0      +0.00     Si        -  FLUTTER_PENDIENTE         FLUTTER_CRITICO (16.2dB ptp)
+C_5_p_RR4.wav               C5    -29.0      +0.00      -        -  FLUTTER_PENDIENTE         FLUTTER_CRITICO (13.4dB ptp)
+C_6_p_RR1.wav               C6    -36.6   +8.00(c)     Si        -  REQUIERE_REGRABACION      OK
+C_6_p_RR2.wav               C6    -35.0      +6.96     Si        -  OK                        FLUTTER_MODERADO (5.6dB ptp)
+C_6_p_RR3.wav               C6    -35.7      +7.70      -        -  OK                        OK
+C_7_p_RR1.wav               C7    -45.6   +8.00(c)      -        -  REQUIERE_REGRABACION      FLUTTER_CRITICO (11.9dB ptp)
+C_7_p_RR2.wav               C7    -42.7   +8.00(c)      -    @1.0s  REQUIERE_REGRABACION      FLUTTER_CRITICO (11.7dB ptp)
+C_7_p_RR3.wav               C7    -48.9   +8.00(c)      -        -  REQUIERE_REGRABACION      FLUTTER_CRITICO (10.5dB ptp)
+
+===========================================================================
+RESUMEN DE ESTADOS:
+
+  FLUTTER_PENDIENTE              8 nota(s)
+  OK                             9 nota(s)
+  REQUIERE_REGRABACION           4 nota(s)
+
+===========================================================================
+ALTERNATIVAS DETALLADAS POR NOTA:
+
+  C_1_p.wav (C1):
+    - Re-emergencia detectada en 24.5s
+    - Se recorta en ese punto + fade-out coseno de 800ms
+    - Alternativa: edicion manual en REAPER para control fino del punto de corte.
+
+  C_2_p_RR1.wav (C2):
+    - Flutter critico (14.7dB ptp): batimiento entre cuerdas desafinadas
+    - Solucion definitiva: re-afinacion del piano en este registro
+    - Paliativo en Kontakt: activar 'random tuning' +/-3 cents para enmascarar el patron.
+
+  C_4_p_RR1.wav (C4):
+    - Re-emergencia detectada en 12.3s
+    - Se recorta en ese punto + fade-out coseno de 800ms
+    - Alternativa: edicion manual en REAPER para control fino del punto de corte.
+    - Flutter critico (17.8dB ptp): batimiento entre cuerdas desafinadas
+    - Solucion definitiva: re-afinacion del piano en este registro
+    - Paliativo en Kontakt: activar 'random tuning' +/-3 cents para enmascarar el patron.
+
+  C_4_p_RR2.wav (C4):
+    - Flutter critico (14.5dB ptp): batimiento entre cuerdas desafinadas
+    - Solucion definitiva: re-afinacion del piano en este registro
+    - Paliativo en Kontakt: activar 'random tuning' +/-3 cents para enmascarar el patron.
+
+  C_4_p_RR3.wav (C4):
+    - Flutter critico (23.0dB ptp): batimiento entre cuerdas desafinadas
+    - Solucion definitiva: re-afinacion del piano en este registro
+    - Paliativo en Kontakt: activar 'random tuning' +/-3 cents para enmascarar el patron.
+
+  C_4_p.wav (C4):
+    - Flutter critico (16.1dB ptp): batimiento entre cuerdas desafinadas
+    - Solucion definitiva: re-afinacion del piano en este registro
+    - Paliativo en Kontakt: activar 'random tuning' +/-3 cents para enmascarar el patron.
+
+  C_5_p_RR2.wav (C5):
+    - Flutter critico (13.2dB ptp): batimiento entre cuerdas desafinadas
+    - Solucion definitiva: re-afinacion del piano en este registro
+    - Paliativo en Kontakt: activar 'random tuning' +/-3 cents para enmascarar el patron.
+
+  C_5_p_RR3.wav (C5):
+    - Flutter critico (16.2dB ptp): batimiento entre cuerdas desafinadas
+    - Solucion definitiva: re-afinacion del piano en este registro
+    - Paliativo en Kontakt: activar 'random tuning' +/-3 cents para enmascarar el patron.
+
+  C_5_p_RR4.wav (C5):
+    - Flutter critico (13.4dB ptp): batimiento entre cuerdas desafinadas
+    - Solucion definitiva: re-afinacion del piano en este registro
+    - Paliativo en Kontakt: activar 'random tuning' +/-3 cents para enmascarar el patron.
+
+  C_6_p_RR1.wav (C6):
+    - Nivel insuficiente: necesita +8.6dB pero techo es +8.0dB
+    - Opciones: (A) re-grabar con mayor velocity; (B) ajustar curva de velocidad en Kontakt (no modifica el WAV)
+    - Se aplico boost maximo de +8.0dB.
+
+  C_7_p_RR1.wav (C7):
+    - Nivel insuficiente: necesita +17.6dB pero techo es +8.0dB
+    - Opciones: (A) re-grabar con mayor velocity; (B) ajustar curva de velocidad en Kontakt (no modifica el WAV)
+    - Se aplico boost maximo de +8.0dB.
+    - Flutter critico (11.9dB ptp): batimiento entre cuerdas desafinadas
+    - Solucion definitiva: re-afinacion del piano en este registro
+    - Paliativo en Kontakt: activar 'random tuning' +/-3 cents para enmascarar el patron.
+
+  C_7_p_RR2.wav (C7):
+    - Nivel insuficiente: necesita +14.7dB pero techo es +8.0dB
+    - Opciones: (A) re-grabar con mayor velocity; (B) ajustar curva de velocidad en Kontakt (no modifica el WAV)
+    - Se aplico boost maximo de +8.0dB.
+    - Re-emergencia detectada en 1.0s
+    - Se recorta en ese punto + fade-out coseno de 800ms
+    - Alternativa: edicion manual en REAPER para control fino del punto de corte.
+    - Flutter critico (11.7dB ptp): batimiento entre cuerdas desafinadas
+    - Solucion definitiva: re-afinacion del piano en este registro
+    - Paliativo en Kontakt: activar 'random tuning' +/-3 cents para enmascarar el patron.
+
+  C_7_p_RR3.wav (C7):
+    - Nivel insuficiente: necesita +20.9dB pero techo es +8.0dB
+    - Opciones: (A) re-grabar con mayor velocity; (B) ajustar curva de velocidad en Kontakt (no modifica el WAV)
+    - Se aplico boost maximo de +8.0dB.
+    - Flutter critico (10.5dB ptp): batimiento entre cuerdas desafinadas
+    - Solucion definitiva: re-afinacion del piano en este registro
+    - Paliativo en Kontakt: activar 'random tuning' +/-3 cents para enmascarar el patron.
+
+===========================================================================
+NOTAS SOBRE FLUTTER (todas las instancias):
+
+  El flutter no puede corregirse sin modificar el ADSR.
+  RECOMENDACIONES:
+  1. Re-afinacion del piano antes de la proxima sesion (prioridad alta).
+     Afecta principalmente: C2_RR1, C4_RR1/RR2/RR3, C4, C5 x4, C7 x3.
+  2. En Kontakt: activar 'random tune' +/-3-5 cents por nota para
+     dispersar el patron de batimiento entre voice instances.
+  3. Si el flutter es de origen acustico (sala), cambiar posicion del
+     microfono o agregar absorcion en modos de sala problematicos.
+
+NOTAS SOBRE NIVEL INSUFICIENTE (C7):
+  Los tres RR de C7 requieren boost de +14 a +21 dB para alcanzar
+  dinamica p. Con el techo de +8dB se aplicaron 8dB pero el nivel
+  resultante sigue estando en pp/ppp. Opciones:
+  1. Re-grabacion con velocity notablemente mayor (finger pressure).
+  2. Usar como capa 'pp' en Kontakt con crossfade dinamico.
+  3. Velocity curve en Kontakt para compensar (no modifica el WAV).
