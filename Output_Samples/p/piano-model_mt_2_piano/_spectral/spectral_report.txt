@@ -1,0 +1,90 @@
+ANALISIS ESPECTRAL — piano_sampler.py
+============================================================
+
+Nota  1: C_1_p.wav  f0=32.8 Hz (C1)  
+  Dur total        : 33.93s
+  Centroide ataque : 2045 Hz
+  Centroide sustain: 466 Hz
+  Diferencia       : +1579 Hz (positivo = mas brillante en ataque)
+  Energia >8kHz    : -59.8 dB relativo al total del ataque
+  RMS ataque       : -36.3 dBFS
+
+Nota  2: C_2_p_RR1.wav  f0=65.8 Hz (C2)  
+  Dur total        : 25.15s
+  Centroide ataque : 786 Hz
+  Centroide sustain: 576 Hz
+  Diferencia       : +210 Hz (positivo = mas brillante en ataque)
+  Energia >8kHz    : -45.5 dB relativo al total del ataque
+  RMS ataque       : -26.8 dBFS
+
+Nota  3: C_2_p_RR2.wav  f0=65.8 Hz (C2)  
+  Dur total        : 25.44s
+  Centroide ataque : 693 Hz
+  Centroide sustain: 562 Hz
+  Diferencia       : +130 Hz (positivo = mas brillante en ataque)
+  Energia >8kHz    : -63.9 dB relativo al total del ataque
+  RMS ataque       : -27.5 dBFS
+
+Nota  4: C_3_p_RR1.wav  f0=131.6 Hz (C3)  [KEY NOISE REDUCTION APLICADO]
+  Dur total        : 22.19s
+  Centroide ataque : 3497 Hz
+  Centroide sustain: 666 Hz
+  Diferencia       : +2831 Hz (positivo = mas brillante en ataque)
+  Energia >8kHz    : -41.2 dB relativo al total del ataque
+  RMS ataque       : -34.1 dBFS
+
+Nota  5: C_3_p_RR2.wav  f0=131.6 Hz (C3)  [KEY NOISE REDUCTION APLICADO]
+  Dur total        : 17.65s
+  Centroide ataque : 1670 Hz
+  Centroide sustain: 560 Hz
+  Diferencia       : +1111 Hz (positivo = mas brillante en ataque)
+  Energia >8kHz    : -38.3 dB relativo al total del ataque
+  RMS ataque       : -33.5 dBFS
+
+Nota  6: C_3_p_RR3.wav  f0=131.6 Hz (C3)  [KEY NOISE REDUCTION APLICADO]
+  Dur total        : 24.07s
+  Centroide ataque : 2490 Hz
+  Centroide sustain: 639 Hz
+  Diferencia       : +1851 Hz (positivo = mas brillante en ataque)
+  Energia >8kHz    : -42.4 dB relativo al total del ataque
+  RMS ataque       : -33.6 dBFS
+
+Nota  7: C_4_p_RR1.wav  f0=263.2 Hz (C4)  [KEY NOISE REDUCTION APLICADO]
+  Dur total        : 20.27s
+  Centroide ataque : 2216 Hz
+  Centroide sustain: 701 Hz
+  Diferencia       : +1515 Hz (positivo = mas brillante en ataque)
+  Energia >8kHz    : -38.4 dB relativo al total del ataque
+  RMS ataque       : -28.0 dBFS
+
+Nota  8: C_4_p_RR2.wav  f0=263.2 Hz (C4)  [KEY NOISE REDUCTION APLICADO]
+  Dur total        : 18.23s
+  Centroide ataque : 2116 Hz
+  Centroide sustain: 706 Hz
+  Diferencia       : +1410 Hz (positivo = mas brillante en ataque)
+  Energia >8kHz    : -49.4 dB relativo al total del ataque
+  RMS ataque       : -29.4 dBFS
+
+Nota  9: C_4_p_RR3.wav  f0=263.2 Hz (C4)  [KEY NOISE REDUCTION APLICADO]
+  Dur total        : 17.16s
+  Centroide ataque : 2305 Hz
+  Centroide sustain: 726 Hz
+  Diferencia       : +1579 Hz (positivo = mas brillante en ataque)
+  Energia >8kHz    : -50.9 dB relativo al total del ataque
+  RMS ataque       : -29.1 dBFS
+
+============================================================
+INTERPRETACION — Octavas 3 y 4:
+
+El ruido de tecla (key mechanism noise) se manifiesta como:
+  - Centroide espectral en ataque significativamente mayor
+    que en sustain (diferencia positiva > 500 Hz)
+  - Energia en banda >8kHz elevada en el ataque (> -20 dB relativo)
+  - RMS de ataque desproporcionadamente alto respecto al sustain
+
+En octavas 3/4 la nota fundamental (130-260 Hz) ya no enmascara
+el ruido de mecanismo en 9-11 kHz — mientras que en C1/C2
+la energía de los armónicos graves domina y enmascare el click.
+
+Umbral aplicado: notas con f0 >= 130.0 Hz
+Atenuacion: -15 dB sobre 8000 Hz en los primeros 50ms

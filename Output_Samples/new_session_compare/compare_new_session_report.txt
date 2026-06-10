@@ -1,0 +1,187 @@
+==============================================================================
+  INFORME COMPARATIVO: SESION EXISTENTE vs NUEVA GRABACION
+==============================================================================
+  Existentes : D:\Sesiones y proyectos\SESION 29-8\Pruebas de rendimiento denoise\Output_Samples\p_rectificado_pip
+  Nuevo      : D:\Renders multipistas\Tesis\Crudos 15-5\TEMPLATE_GRABACION_PIANO_XY.wav
+  SR existentes (original): 44100 Hz  (resampleados a 48000 Hz)
+  SR nuevo    (original)  : 48000 Hz
+
+==============================================================================
+CONTEXTO DE SESION
+==============================================================================
+  Muestras existentes : 21 notas (p dinamica, piano patrimonial)
+    Microfonos         : CM25 (SDC, ch1) + AT3035 (LDC, ch2) — par hibrido
+    Procesamiento      : MVSep -> piano_sampler -> pipeline_rectify
+    SNR rango          : 57.4 dB (C1) a 74.1 dB (C5_RR1 — EXCELENTE)
+    Ruido MVSep        : tonal en TODAS (flatness < 0.08)
+
+  Nueva grabacion     : 6 notas detectadas
+    Microfonos         : Rode M5 ORTF (par matched SDC, 110 deg, 17 cm)
+    SR de grabacion    : 48000 Hz (diferente a existentes)
+    Procesamiento      : pre-MVSep (grabacion cruda de REAPER)
+    Dinamica esperada  : mf  (segun sesion de grabacion)
+
+==============================================================================
+COMPARACION DE DINAMICA
+==============================================================================
+
+  Muestras existentes (p dinamica — post-pipeline):
+    Peak promedio    : -14.8 dBFS  (rango -19.3 a -8.8)
+    RMS sustain prom.: -29.8 dBFS  (target p = -28.0 dBFS)
+    Flutter ptp prom.: 67.2 dB  (max 86.1 dB)
+
+  Nueva grabacion (pre-MVSep):
+    Peak promedio    : -22.5 dBFS  (target mf = -6.0 dBFS)
+    RMS sustain prom.: -40.9 dBFS  (target mf = -18.0 dBFS)
+    Flutter ptp prom.: 36.8 dB
+    Deficit de nivel : -16.5 dB
+
+  [!] DIAGNOSTICO DE NIVEL:
+    CRITICO: el nivel es 16.5 dB por debajo del target mf.
+    -> Subir ganancia del preamp Focusrite en aprox. +16 dB
+    -> Verificar: pico en track ORTF REAPER debe llegar a -6.0 dBFS
+    -> Esta toma NO es apta para el pipeline como muestra final de mf.
+    -> Puede usarse para verificar timbre, fase y configuracion de micros.
+
+  Detalle por nota nueva:
+  Nota    t_ini   Dur   f0_Hz  Pitch    Peak  RMS_sus  Flutter    Noise
+  ----------------------------------------------------------------------
+  1         0.8s 35.0s    33.9    C♯1   -25.9    -66.2     38.4    -66.1
+  2        36.5s 14.7s    49.6     G1   -18.8    -32.8     40.0    -68.9
+  3        51.2s 31.6s    49.6     G1   -20.9    -34.8     37.0    -68.0
+  4        82.8s 17.7s    99.1     G2   -22.9    -36.7     34.1    -66.4
+  5       100.4s 21.5s   197.1     G3   -22.1    -36.2     36.5    -70.3
+  6       121.9s 18.1s   197.1     G3   -24.4    -38.3     34.9    -70.7
+
+==============================================================================
+COMPARACION DE FASE L/R
+==============================================================================
+
+  Muestras existentes (CM25+AT3035 — par hibrido SDC+LDC):
+    ITD promedio     : 0.000 ms  (std=0.000 ms)
+    Coherencia LF prom.: 0.930  (63-250 Hz)
+    Coherencia HF prom.: 0.921  (2k-8k Hz)
+
+  Nueva grabacion (Rode M5 ORTF — par matched SDC):
+    ITD estimado     : 0.062 ms
+      -> ORTF teorico 17cm: ~0.50 ms  (distancia entre capsulas / c)
+      -> Diferencia real vs teorico: 0.438 ms
+    Coherencia por banda:
+         63 Hz: 0.958  OK
+        126 Hz: 0.951  OK
+        252 Hz: 0.907  OK
+        504 Hz: 0.824  OK
+       1008 Hz: 0.867  OK
+       2016 Hz: 0.574  [!] BAJA
+       4032 Hz: 0.131  [!] BAJA
+       8064 Hz: 0.059  [!] BAJA
+
+  Interpretacion:
+    Coherencia LF ALTA: el par ORTF M5 tiene buena correlacion a bajas
+    frecuencias. Imagen esterea solida. Compatible con procesamiento Kontakt.
+    [!] Coherencia HF muy baja. Verificar posicion de los M5.
+
+  Diferencia de fase entre sesiones (existentes vs nuevo):
+    Delta ITD: +0.062 ms
+    Los existentes usaron par hibrido SDC+LDC (respuesta de fase distinta
+    entre canales). El nuevo par ORTF M5 es simetrico — la coherencia sera
+    diferente por diseno. Documentar como variable controlada en tesis.
+
+==============================================================================
+COMPARACION DE PISO DE RUIDO Y PRECAUCIONES PARA REDUCCION
+==============================================================================
+
+  Muestras existentes (post-MVSep):
+    Piso de ruido prom. : -91.4 dBFS  (std=10.4)
+    Flatness prom.      : 0.2189  (0=tonal, 1=blanco)
+    Flatness max        : 0.3962
+    Interpretacion      : ruido MVSep TONAL dominante en TODAS las muestras
+    Hum detectado en    : 5 muestras
+
+  Nueva grabacion (pre-MVSep, grabacion directa REAPER):
+    Piso de ruido prom. : -68.4 dBFS  (std=1.8)
+    Flatness prom.      : 0.2202
+    Interpretacion      : ruido semi-tonal (posible ruido de sala + componentes estructurados)
+    Hum                : no detectado (OK)
+
+  PRECAUCIONES PARA REDUCCION DE RUIDO EN NUEVAS MUESTRAS:
+
+  1. DIFERENCIA DE PISO DE RUIDO (pre vs post MVSep):
+     Nuevo piso: -68.4 dBFS  |  Existentes post-MVSep: -91.4 dBFS
+     Diferencia: +23.0 dB
+     [!] El nuevo archivo tiene piso de ruido MAS ALTO que los existentes.
+     Tras MVSep, el piso bajara (el modelo separa la senal del ruido de sala).
+     -> NO aplicar denoise antes de MVSep: el modelo lo maneja.
+     -> Aplicar denoise (RX Spectral) DESPUES de MVSep si flatness < 0.15.
+
+  2. RUIDO MUSICAL (MVSep) — PRECAUCION PRINCIPAL:
+     Las muestras existentes tienen ruido MVSep TONAL (flatness < 0.08).
+     Las nuevas muestras tendran el mismo problema post-MVSep.
+     -> Estrategia (misma que existentes):
+        a) smooth_flutter_sustain() en pipeline_rectify.py (ya implementado)
+        b) iZotope RX Spectral Repair (aprender perfil de la COLA de la nota)
+        c) NO usar DeNoise broadband: colorearia el piano
+        d) Acon Digital DeNoise (~free) como alternativa mas economica
+
+  3. FLATNESS PRE-MVSep vs POST-MVSep:
+     Pre-MVSep flatness nuevo : 0.2202
+     Post-MVSep flatness exist.: 0.2189
+     -> El modelo MVSep INTRODUCE ruido tonal (flatness baja).
+     -> La flatness pre-MVSep no predice la post; el modelo domina.
+     -> Tras MVSep: esperar flatness < 0.10 (igual que existentes).
+
+  4. DIFERENCIA DE SAMPLE RATE (48000 vs 44100 Hz):
+     Existentes: 44100 Hz  |  Nuevas: 48000 Hz
+     -> TARGET_SR = 48000 en los tres scripts: ya implementado.
+     -> Los existentes se resamplean a 48000 Hz al cargarse.
+     -> Las nuevas se leen directamente a 48000 Hz (sin conversion).
+     -> REAPER: verificar que el proyecto y la interfaz esten a 48000 Hz.
+     -> IMPORTANTE: si se mezclan muestras 44100 y 48000 en Kontakt,
+        configurar el instrumento a 48000 Hz para evitar pitch-shifting.
+
+  5. NIVEL INSUFICIENTE (nueva grabacion):
+     Deficit actual: -16.5 dB respecto a target mf (-6.0 dBFS)
+     -> El pipeline_rectify.py intentara boostar hasta LEVEL_MAX_BOOST.
+     -> Con deficit de 23 dB el boost de +8 dB es INSUFICIENTE.
+     -> ACCION: re-grabar a nivel correcto antes de procesar.
+     -> Referencia: peak ORTF en REAPER debe ser -6 dBFS para mf.
+
+==============================================================================
+RECOMENDACIONES DE PARAMETROS PARA NUEVAS MUESTRAS EN EL PIPELINE
+==============================================================================
+
+  piano_sampler.py:
+    SESSION_MODIFIERS = []        # sin modificadores (grabacion mf normal)
+    INPUT_FILE = <ruta stem MVSep de la nueva sesion>
+    INTENSITY_LABEL = 'mf'
+    TARGET_SR = 48000             # ya configurado
+    DYNAMIC_NORM_TARGET_DB = -18.0  # target mf (en lugar de -28.0 para p)
+
+  pipeline_rectify.py:
+    Actualizar SESSIONS para incluir la nueva carpeta mf:
+      SESSIONS = [
+        r"...p_rectificado_pip...",  # existentes (p)
+        r"...nueva_sesion_mf...",    # nuevas (mf)
+      ]
+    LEVEL_TARGET_DB = -18.0  # target mf (en lugar de -28.0 para p)
+    TARGET_SR = 48000        # ya configurado
+
+  pipeline_compare.py:
+    SESSION_A = {'label': 'Sesion p (existente)', 'folder': <p_rectificado>}
+    SESSION_B = {'label': 'Sesion mf (nueva)',    'folder': <nueva_mf>}
+    TARGET_SR = 48000  # ya configurado
+
+==============================================================================
+SIMILITUDES DETECTADAS
+==============================================================================
+
+  Caracteristica          Existentes        Nuevo          Compatibilidad
+  ----------------------------------------------------------------------
+  Instrumento             Piano patrimonial  Piano patrimonial  IDENTICO
+  Flutter ptp (prom.)     67.2 dB          36.8 dB           DIFERENTE
+  Tipo de ruido           Tonal (MVSep)      Blanco/mixto         OK
+  Sample rate (trabajo)   48000 Hz       48000 Hz       IGUAL (TARGET_SR)
+  Bit depth exportacion   24 bits            24 bits          IGUAL (PCM_24)
+  Setup de mic            CM25+AT3035        Rode M5 ORTF     DIFERENTE (var. controlada)
+  ITD                     0.00 ms (prom.)  0.06 ms        SIMILAR
+

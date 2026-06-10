@@ -1,0 +1,69 @@
+PIPELINE DE INCONSISTENCIAS — Comparacion entre sesiones
+======================================================================
+Sesion A: Sesion 01  (C1-C4)  (9 muestras)
+Sesion B: Sesion 02  (B0, C4-C7)  (12 muestras)
+
+======================================================================
+  Sesion 01  (C1-C4)
+======================================================================
+
+Archivo                  MIDI    Dur  RMS_atk  RMS_sus   Trend    Dev  Flutter  HF_atk Flags
+--------------------------------------------------------------------------------------------------------------
+C_1_p.wav                  24   33.9s   -36.3   -24.0  -21.9   -2.1     8.0  -59.8  FLUTTER_MODERADO (8.0dB ptp) | REEMERGENCIA x1
+C_2_p_RR1.wav              36   25.2s   -26.8   -29.3  -24.6   -4.7    14.7  -45.5  NIVEL_FUERA_TENDENCIA (-4.7dB) | FLUTTER_CRITICO (14.7dB ptp)
+C_2_p_RR2.wav              36   25.4s   -27.5   -29.9  -24.6   -5.3     6.0  -67.7  NIVEL_FUERA_TENDENCIA (-5.3dB) | FLUTTER_MODERADO (6.0dB ptp)
+C_3_p_RR1.wav              48   22.2s   -34.1   -26.3  -27.4   +1.1     5.7  -41.2  FLUTTER_MODERADO (5.7dB ptp) | KEY_NOISE_ALTO (-41.2dB HF)
+C_3_p_RR2.wav              48   17.7s   -33.5   -31.4  -27.4   -4.0     5.3  -38.3  NIVEL_FUERA_TENDENCIA (-4.0dB) | FLUTTER_MODERADO (5.3dB ptp) | KEY_NOISE_ALTO (-38.3dB HF)
+C_3_p_RR3.wav              48   24.1s   -33.6   -29.1  -27.4   -1.7     5.4  -42.4  FLUTTER_MODERADO (5.4dB ptp)
+C_4_p_RR1.wav              60   20.3s   -28.0   -22.2  -30.1   +7.9    17.8  -38.4  NIVEL_FUERA_TENDENCIA (+7.9dB) | FLUTTER_CRITICO (17.8dB ptp) | REEMERGENCIA x1 | KEY_NOISE_ALTO (-38.4dB HF)
+C_4_p_RR2.wav              60   18.2s   -29.4   -23.2  -30.1   +6.9    14.5  -49.6  NIVEL_FUERA_TENDENCIA (+6.9dB) | FLUTTER_CRITICO (14.5dB ptp)
+C_4_p_RR3.wav              60   17.2s   -29.1   -22.5  -30.1   +7.7    23.0  -51.2  NIVEL_FUERA_TENDENCIA (+7.7dB) | FLUTTER_CRITICO (23.0dB ptp)
+
+======================================================================
+  Sesion 02  (B0, C4-C7)
+======================================================================
+
+Archivo                  MIDI    Dur  RMS_atk  RMS_sus   Trend    Dev  Flutter  HF_atk Flags
+--------------------------------------------------------------------------------------------------------------
+B_0_p.wav                  23   31.0s   -31.8   -27.0  -21.7   -5.3     4.4  -31.3  NIVEL_FUERA_TENDENCIA (-5.3dB) | KEY_NOISE_ALTO (-31.3dB HF)
+C_4_p.wav                  60   19.6s   -34.6   -28.0  -30.1   +2.1    16.1  -44.7  FLUTTER_CRITICO (16.1dB ptp)
+C_5_p_RR1.wav              72   20.9s   -22.0   -28.0  -32.9   +4.9     7.7  -36.1  NIVEL_FUERA_TENDENCIA (+4.9dB) | FLUTTER_MODERADO (7.7dB ptp) | KEY_NOISE_ALTO (-36.1dB HF)
+C_5_p_RR2.wav              72   13.3s   -21.1   -26.7  -32.9   +6.2    13.2  -58.1  NIVEL_FUERA_TENDENCIA (+6.2dB) | FLUTTER_CRITICO (13.2dB ptp)
+C_5_p_RR3.wav              72   10.1s   -23.4   -28.0  -32.9   +4.9    16.2  -35.0  NIVEL_FUERA_TENDENCIA (+4.9dB) | FLUTTER_CRITICO (16.2dB ptp) | KEY_NOISE_ALTO (-35.0dB HF)
+C_5_p_RR4.wav              72   15.7s   -31.1   -29.0  -32.9   +3.8    13.4  -49.9  FLUTTER_CRITICO (13.4dB ptp)
+C_6_p_RR1.wav              84   11.1s   -27.5   -36.6  -35.6   -0.9     4.9  -36.4  KEY_NOISE_ALTO (-36.4dB HF)
+C_6_p_RR2.wav              84   11.7s   -26.3   -35.0  -35.6   +0.7     5.6  -36.3  FLUTTER_MODERADO (5.6dB ptp) | KEY_NOISE_ALTO (-36.3dB HF)
+C_6_p_RR3.wav              84   14.4s   -28.1   -35.7  -35.6   -0.1     5.0  -40.9  KEY_NOISE_ALTO (-40.9dB HF)
+C_7_p_RR1.wav              96    6.3s   -33.2   -45.6  -38.4   -7.2    11.9  -41.9  NIVEL_FUERA_TENDENCIA (-7.2dB) | FLUTTER_CRITICO (11.9dB ptp) | KEY_NOISE_ALTO (-41.9dB HF) | CENTROIDE_INVERTIDO (-783Hz)
+C_7_p_RR2.wav              96    7.7s   -30.7   -42.7  -38.4   -4.4    11.7  -41.5  NIVEL_FUERA_TENDENCIA (-4.4dB) | FLUTTER_CRITICO (11.7dB ptp) | REEMERGENCIA x2 | KEY_NOISE_ALTO (-41.5dB HF) | CENTROIDE_INVERTIDO (-574Hz)
+C_7_p_RR3.wav              96    8.5s   -35.5   -48.9  -38.4  -10.5    10.5  -55.9  NIVEL_FUERA_TENDENCIA (-10.5dB) | FLUTTER_CRITICO (10.5dB ptp) | CENTROIDE_INVERTIDO (-1057Hz)
+
+======================================================================
+  SOLAPAMIENTO ENTRE SESIONES (misma nota en A y B)
+======================================================================
+
+  C4 (MIDI 60)  —  Sesion A: 3 take(s)    Sesion B: 1 take(s)
+    RMS sustain   A=-22.6 dBFS   B=-28.0 dBFS   diff=-5.4 dB
+    Flutter ptp   A=18.5 dB     B=16.1 dB     diff=-2.4 dB
+    HF ataque     A=-46.4 dB     B=-44.7 dB     diff=+1.7 dB
+    Duracion      A=18.6s          B=19.6s          diff=+1.1s
+    FLAGS: NIVEL_CROSS_SESSION -5.4dB
+
+======================================================================
+  RESUMEN EJECUTIVO
+======================================================================
+
+  Flutter critico  (>=10.0dB):  11 nota(s): C_2_p_RR1.wav, C_4_p_RR1.wav, C_4_p_RR2.wav, C_4_p_RR3.wav, C_4_p.wav, C_5_p_RR2.wav, C_5_p_RR3.wav, C_5_p_RR4.wav, C_7_p_RR1.wav, C_7_p_RR2.wav, C_7_p_RR3.wav
+  Flutter moderado (5.0-10.0dB): 7 nota(s): C_1_p.wav, C_2_p_RR2.wav, C_3_p_RR1.wav, C_3_p_RR2.wav, C_3_p_RR3.wav, C_5_p_RR1.wav, C_6_p_RR2.wav
+  Re-emergencia de sustain:         3 nota(s): C_1_p.wav, C_4_p_RR1.wav, C_7_p_RR2.wav
+  Ruido de tecla alto (>-42.0dB):   11 nota(s): C_3_p_RR1.wav, C_3_p_RR2.wav, C_4_p_RR1.wav, B_0_p.wav, C_5_p_RR1.wav, C_5_p_RR3.wav, C_6_p_RR1.wav, C_6_p_RR2.wav, C_6_p_RR3.wav, C_7_p_RR1.wav, C_7_p_RR2.wav
+
+  PRIORIDADES DE ACCION:
+  1. Re-afinacion del piano en registros con flutter critico
+     antes de la proxima sesion de grabacion.
+  2. Re-grabacion de notas con re-emergencia de sustain
+     (inspeccionar visualmente el PNG de sustain en _spectral/).
+  3. Verificar nivel dinamico de C6 y C7 (sesion 02) —
+     niveles entre -35 y -49 dBFS no corresponden a dinamica p.
+  4. C4 aparece en ambas sesiones con diferencia de nivel y flutter;
+     seleccionar la mejor version para la biblioteca o re-grabar.

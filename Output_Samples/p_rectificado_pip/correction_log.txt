@@ -1,0 +1,145 @@
+LOG DE RECTIFICACION -- pipeline_rectify.py
+================================================================================
+Target nivel p    : -28.0 dBFS  |  Tolerancia: +/-1.5dB
+Boost max normal  : +8.0dB  |  Boost max _UNA: +12.0dB
+KNR Plus normal   : 10dB adicional si HF > -38.0dB
+KNR Plus _UNA     : 8dB (sordina atenua HF fisicamente)
+Smooth flutter    : Savitzky-Golay sobre RMS por banda STFT (solo sustain)
+Trim reemergencia : fade-out coseno de 800ms
+Instrumento       : Piano patrimonial NO afinable. Flutter = caracter. del instr.
+================================================================================
+
+Archivo                     Nota     RMS    Gain  KNR+  Smooth    Trim Estado                 Flags
+----------------------------------------------------------------------------------------------------------------------------------
+C_1_p.wav                     C1  -24.0   -4.04      -       Si   @24.5s  FLUTTER_SUAVIZADO      FLUTTER_MODERADO (8.0dB ptp)
+C_2_p_RR1.wav                 C2  -29.3   +0.00      -       RX        -  FLUTTER_CRITICO_RX     FLUTTER_CRITICO (14.7dB ptp) — REQUIERE_RX
+C_2_p_RR2.wav                 C2  -29.9   +1.91      -       Si        -  FLUTTER_SUAVIZADO      FLUTTER_MODERADO (6.0dB ptp)
+C_3_p_RR1.wav                 C3  -26.3   -1.70      -       Si        -  FLUTTER_SUAVIZADO      FLUTTER_MODERADO (5.7dB ptp)
+C_3_p_RR2.wav                 C3  -31.4   +3.44      -       Si        -  FLUTTER_SUAVIZADO      FLUTTER_MODERADO (5.3dB ptp)
+C_3_p_RR3.wav                 C3  -29.1   +0.00      -       Si        -  FLUTTER_SUAVIZADO      FLUTTER_MODERADO (5.4dB ptp)
+C_4_p_RR1.wav                 C4  -22.2   -5.79      -       RX   @12.3s  FLUTTER_CRITICO_RX     FLUTTER_CRITICO (17.8dB ptp) — REQUIERE_RX
+C_4_p_RR2.wav                 C4  -23.2   -4.79      -       RX        -  FLUTTER_CRITICO_RX     FLUTTER_CRITICO (14.5dB ptp) — REQUIERE_RX
+C_4_p_RR3.wav                 C4  -22.5   -5.51      -       RX        -  FLUTTER_CRITICO_RX     FLUTTER_CRITICO (23.0dB ptp) — REQUIERE_RX
+B_0_p.wav                     B0  -27.0   +0.00      -        -        -  OK                     OK
+C_4_p.wav                     C4  -28.0   +0.00      -       RX        -  FLUTTER_CRITICO_RX     FLUTTER_CRITICO (16.1dB ptp) — REQUIERE_RX
+C_5_p_RR1.wav                 C5  -28.0   +0.00   10dB       Si        -  FLUTTER_SUAVIZADO      FLUTTER_MODERADO (7.7dB ptp)
+C_5_p_RR2.wav                 C5  -26.7   +0.00      -       RX        -  FLUTTER_CRITICO_RX     FLUTTER_CRITICO (13.2dB ptp) — REQUIERE_RX
+C_5_p_RR3.wav                 C5  -28.0   +0.00   10dB       RX        -  FLUTTER_CRITICO_RX     FLUTTER_CRITICO (16.2dB ptp) — REQUIERE_RX
+C_5_p_RR4.wav                 C5  -29.0   +0.00      -       RX        -  FLUTTER_CRITICO_RX     FLUTTER_CRITICO (13.4dB ptp) — REQUIERE_RX
+C_6_p_RR1.wav                 C6  -36.6 +8.00(c)   10dB        -        -  REQUIERE_REGRABACION   OK
+C_6_p_RR2.wav                 C6  -35.0   +6.96   10dB       Si        -  FLUTTER_SUAVIZADO      FLUTTER_MODERADO (5.6dB ptp)
+C_6_p_RR3.wav                 C6  -35.7   +7.70      -        -        -  OK                     OK
+C_7_p_RR1.wav                 C7  -45.6 +8.00(c)      -       RX        -  REQUIERE_REGRABACION   FLUTTER_CRITICO (11.9dB ptp) — REQUIERE_RX
+C_7_p_RR2.wav                 C7  -42.7 +8.00(c)      -       RX    @1.0s  REQUIERE_REGRABACION   FLUTTER_CRITICO (11.7dB ptp) — REQUIERE_RX
+C_7_p_RR3.wav                 C7  -48.9 +8.00(c)      -       RX        -  REQUIERE_REGRABACION   FLUTTER_CRITICO (10.5dB ptp) — REQUIERE_RX
+
+================================================================================
+RESUMEN DE ESTADOS:
+
+  FLUTTER_CRITICO_RX             8 nota(s)
+  FLUTTER_SUAVIZADO              7 nota(s)
+  OK                             2 nota(s)
+  REQUIERE_REGRABACION           4 nota(s)
+
+================================================================================
+ALTERNATIVAS DETALLADAS POR NOTA:
+
+  C_1_p.wav (C1):
+    - Re-emergencia detectada en 24.5s
+    - Se recorta + fade-out coseno de 800ms
+    - Alternativa: edicion manual en REAPER para control fino del punto de corte.
+
+  C_2_p_RR1.wav (C2):
+    - Flutter critico (14.7dB ptp): instrumento patrimonial no afinable
+    - Pipeline aplica smoothing espectral (paliatvo)
+    - Solucion definitiva: iZotope RX Elements De-flutter + Kontakt Random Tune +/-5 cents.
+
+  C_4_p_RR1.wav (C4):
+    - Flutter critico (17.8dB ptp): instrumento patrimonial no afinable
+    - Pipeline aplica smoothing espectral (paliatvo)
+    - Solucion definitiva: iZotope RX Elements De-flutter + Kontakt Random Tune +/-5 cents.
+    - Re-emergencia detectada en 12.3s
+    - Se recorta + fade-out coseno de 800ms
+    - Alternativa: edicion manual en REAPER para control fino del punto de corte.
+
+  C_4_p_RR2.wav (C4):
+    - Flutter critico (14.5dB ptp): instrumento patrimonial no afinable
+    - Pipeline aplica smoothing espectral (paliatvo)
+    - Solucion definitiva: iZotope RX Elements De-flutter + Kontakt Random Tune +/-5 cents.
+
+  C_4_p_RR3.wav (C4):
+    - Flutter critico (23.0dB ptp): instrumento patrimonial no afinable
+    - Pipeline aplica smoothing espectral (paliatvo)
+    - Solucion definitiva: iZotope RX Elements De-flutter + Kontakt Random Tune +/-5 cents.
+
+  C_4_p.wav (C4):
+    - Flutter critico (16.1dB ptp): instrumento patrimonial no afinable
+    - Pipeline aplica smoothing espectral (paliatvo)
+    - Solucion definitiva: iZotope RX Elements De-flutter + Kontakt Random Tune +/-5 cents.
+
+  C_5_p_RR2.wav (C5):
+    - Flutter critico (13.2dB ptp): instrumento patrimonial no afinable
+    - Pipeline aplica smoothing espectral (paliatvo)
+    - Solucion definitiva: iZotope RX Elements De-flutter + Kontakt Random Tune +/-5 cents.
+
+  C_5_p_RR3.wav (C5):
+    - Flutter critico (16.2dB ptp): instrumento patrimonial no afinable
+    - Pipeline aplica smoothing espectral (paliatvo)
+    - Solucion definitiva: iZotope RX Elements De-flutter + Kontakt Random Tune +/-5 cents.
+
+  C_5_p_RR4.wav (C5):
+    - Flutter critico (13.4dB ptp): instrumento patrimonial no afinable
+    - Pipeline aplica smoothing espectral (paliatvo)
+    - Solucion definitiva: iZotope RX Elements De-flutter + Kontakt Random Tune +/-5 cents.
+
+  C_6_p_RR1.wav (C6):
+    - Nivel insuficiente: necesita +8.6dB pero techo es +8dB
+    - Opciones: (A) re-grabar con mayor velocity; (B) ajustar curva velocidad en Kontakt
+    - Se aplico boost maximo de +8dB.
+
+  C_7_p_RR1.wav (C7):
+    - Nivel insuficiente: necesita +17.6dB pero techo es +8dB
+    - Opciones: (A) re-grabar con mayor velocity; (B) ajustar curva velocidad en Kontakt
+    - Se aplico boost maximo de +8dB.
+    - Flutter critico (11.9dB ptp): instrumento patrimonial no afinable
+    - Pipeline aplica smoothing espectral (paliatvo)
+    - Solucion definitiva: iZotope RX Elements De-flutter + Kontakt Random Tune +/-5 cents.
+
+  C_7_p_RR2.wav (C7):
+    - Nivel insuficiente: necesita +14.7dB pero techo es +8dB
+    - Opciones: (A) re-grabar con mayor velocity; (B) ajustar curva velocidad en Kontakt
+    - Se aplico boost maximo de +8dB.
+    - Flutter critico (11.7dB ptp): instrumento patrimonial no afinable
+    - Pipeline aplica smoothing espectral (paliatvo)
+    - Solucion definitiva: iZotope RX Elements De-flutter + Kontakt Random Tune +/-5 cents.
+    - Re-emergencia detectada en 1.0s
+    - Se recorta + fade-out coseno de 800ms
+    - Alternativa: edicion manual en REAPER para control fino del punto de corte.
+
+  C_7_p_RR3.wav (C7):
+    - Nivel insuficiente: necesita +20.9dB pero techo es +8dB
+    - Opciones: (A) re-grabar con mayor velocity; (B) ajustar curva velocidad en Kontakt
+    - Se aplico boost maximo de +8dB.
+    - Flutter critico (10.5dB ptp): instrumento patrimonial no afinable
+    - Pipeline aplica smoothing espectral (paliatvo)
+    - Solucion definitiva: iZotope RX Elements De-flutter + Kontakt Random Tune +/-5 cents.
+
+================================================================================
+ESTRATEGIA DE CORRECCION DE FLUTTER (instrumento patrimonial no afinable):
+
+  El flutter no puede corregirse no-destructivamente de forma completa.
+  El pipeline aplica suavizado espectral como paliativo. Estrategia gradual:
+  1. pipeline_rectify.py: smooth_flutter_sustain() — Savitzky-Golay por banda
+     STFT. Atenua la modulacion de amplitud sin afectar el pitch ni el ataque.
+  2. REAPER: ReaTune / ReaPitch para flutter moderado (2.5-10 dB ptp).
+  3. iZotope RX Elements (~USD 100): De-flutter para flutter critico (>10 dB ptp).
+     Notas candidatas: C2_RR1, C4 x3, C5 x4, C7 x3.
+  4. Kontakt 7: Random Tune +/-5 cents por voz — dispersa el patron de
+     batimiento entre voice instances. Documentado como decision de diseno
+     que reproduce el comportamiento acustico del instrumento patrimonial.
+
+NOTAS SOBRE NIVEL INSUFICIENTE (C7):
+  Los tres RR de C7 requieren boost de +14 a +21 dB. Techo de +8dB insuficiente.
+  Causa raiz: velocity insuficiente del pianista en registro agudo.
+  El nuevo setup M5 mejora SNR pero no resuelve el problema de velocity.
+  Opciones: (1) Re-grabar con mayor velocity. (2) Capa 'pp' en Kontakt.

@@ -1,0 +1,159 @@
+ANALISIS ESPECTRAL — piano_sampler.py
+============================================================
+
+Nota  1: C_4_p.wav  f0=263.1 Hz (C4)  [KEY NOISE REDUCTION APLICADO]  [FLUTTER 16.2dB ptp]
+  Dur total        : 19.61s
+  Centroide ataque : 2000 Hz
+  Centroide sustain: 710 Hz
+  Diferencia       : +1290 Hz (positivo = mas brillante en ataque)
+  Energia >8kHz    : -44.6 dB relativo al total del ataque
+  RMS ataque       : -28.7 dBFS
+  Gain dinamico    : -5.96 dB
+  Flutter ptp      : 16.2 dB  |  Re-emergencias: 0
+
+Nota  2: C_5_p_RR1.wav  f0=525.8 Hz (C5)  [KEY NOISE REDUCTION APLICADO]  [FLUTTER 7.7dB ptp]
+  Dur total        : 20.91s
+  Centroide ataque : 1679 Hz
+  Centroide sustain: 857 Hz
+  Diferencia       : +822 Hz (positivo = mas brillante en ataque)
+  Energia >8kHz    : -36.0 dB relativo al total del ataque
+  RMS ataque       : -20.5 dBFS
+  Gain dinamico    : -1.55 dB
+  Flutter ptp      : 7.7 dB  |  Re-emergencias: 0
+
+Nota  3: C_5_p_RR2.wav  f0=525.7 Hz (C5)  [KEY NOISE REDUCTION APLICADO]  [FLUTTER 13.2dB ptp]
+  Dur total        : 13.30s
+  Centroide ataque : 1532 Hz
+  Centroide sustain: 829 Hz
+  Diferencia       : +703 Hz (positivo = mas brillante en ataque)
+  Energia >8kHz    : -57.8 dB relativo al total del ataque
+  RMS ataque       : -21.1 dBFS
+  Gain dinamico    : 0.00 dB (sin correccion)
+  Flutter ptp      : 13.2 dB  |  Re-emergencias: 0
+
+Nota  4: C_5_p_RR3.wav  f0=525.9 Hz (C5)  [KEY NOISE REDUCTION APLICADO]  [FLUTTER 16.2dB ptp]
+  Dur total        : 10.06s
+  Centroide ataque : 1652 Hz
+  Centroide sustain: 880 Hz
+  Diferencia       : +773 Hz (positivo = mas brillante en ataque)
+  Energia >8kHz    : -34.9 dB relativo al total del ataque
+  RMS ataque       : -20.3 dBFS
+  Gain dinamico    : -3.13 dB
+  Flutter ptp      : 16.2 dB  |  Re-emergencias: 0
+
+Nota  5: C_5_p_RR4.wav  f0=525.6 Hz (C5)  [KEY NOISE REDUCTION APLICADO]  [FLUTTER 13.4dB ptp]
+  Dur total        : 15.73s
+  Centroide ataque : 3674 Hz
+  Centroide sustain: 784 Hz
+  Diferencia       : +2890 Hz (positivo = mas brillante en ataque)
+  Energia >8kHz    : -49.8 dB relativo al total del ataque
+  RMS ataque       : -31.1 dBFS
+  Gain dinamico    : 0.00 dB (sin correccion)
+  Flutter ptp      : 13.4 dB  |  Re-emergencias: 0
+
+Nota  6: C_6_p_RR1.wav  f0=1052.6 Hz (C6)  [KEY NOISE REDUCTION APLICADO]  [FLUTTER 4.9dB ptp]
+  Dur total        : 11.06s
+  Centroide ataque : 2054 Hz
+  Centroide sustain: 1287 Hz
+  Diferencia       : +767 Hz (positivo = mas brillante en ataque)
+  Energia >8kHz    : -36.4 dB relativo al total del ataque
+  RMS ataque       : -27.5 dBFS
+  Gain dinamico    : 0.00 dB (sin correccion)
+  Flutter ptp      : 4.9 dB  |  Re-emergencias: 0
+
+Nota  7: C_6_p_RR2.wav  f0=1052.6 Hz (C6)  [KEY NOISE REDUCTION APLICADO]  [FLUTTER 5.6dB ptp]
+  Dur total        : 11.69s
+  Centroide ataque : 2098 Hz
+  Centroide sustain: 1276 Hz
+  Diferencia       : +822 Hz (positivo = mas brillante en ataque)
+  Energia >8kHz    : -36.3 dB relativo al total del ataque
+  RMS ataque       : -26.3 dBFS
+  Gain dinamico    : 0.00 dB (sin correccion)
+  Flutter ptp      : 5.6 dB  |  Re-emergencias: 0
+
+Nota  8: C_6_p_RR3.wav  f0=1052.6 Hz (C6)  [KEY NOISE REDUCTION APLICADO]  [FLUTTER 5.0dB ptp]
+  Dur total        : 14.38s
+  Centroide ataque : 2001 Hz
+  Centroide sustain: 1265 Hz
+  Diferencia       : +736 Hz (positivo = mas brillante en ataque)
+  Energia >8kHz    : -40.9 dB relativo al total del ataque
+  RMS ataque       : -28.1 dBFS
+  Gain dinamico    : 0.00 dB (sin correccion)
+  Flutter ptp      : 5.0 dB  |  Re-emergencias: 0
+
+Nota  9: C_7_p_RR1.wav  f0=2117.5 Hz (C7)  [KEY NOISE REDUCTION APLICADO]  [FLUTTER 11.9dB ptp]
+  Dur total        : 6.28s
+  Centroide ataque : 1894 Hz
+  Centroide sustain: 2268 Hz
+  Diferencia       : -374 Hz (positivo = mas brillante en ataque)
+  Energia >8kHz    : -41.7 dB relativo al total del ataque
+  RMS ataque       : -33.2 dBFS
+  Gain dinamico    : 0.00 dB (sin correccion)
+  Flutter ptp      : 11.9 dB  |  Re-emergencias: 0
+
+Nota 10: C_7_p_RR2.wav  f0=2117.4 Hz (C7)  [KEY NOISE REDUCTION APLICADO]  [FLUTTER 11.7dB ptp] [REEMERGENCIA x2]
+  Dur total        : 7.71s
+  Centroide ataque : 2133 Hz
+  Centroide sustain: 2250 Hz
+  Diferencia       : -116 Hz (positivo = mas brillante en ataque)
+  Energia >8kHz    : -41.2 dB relativo al total del ataque
+  RMS ataque       : -30.7 dBFS
+  Gain dinamico    : 0.00 dB (sin correccion)
+  Flutter ptp      : 11.7 dB  |  Re-emergencias: 2
+
+Nota 11: C_7_p_RR3.wav  f0=2117.6 Hz (C7)  [KEY NOISE REDUCTION APLICADO]  [FLUTTER 10.5dB ptp]
+  Dur total        : 8.48s
+  Centroide ataque : 1772 Hz
+  Centroide sustain: 2344 Hz
+  Diferencia       : -571 Hz (positivo = mas brillante en ataque)
+  Energia >8kHz    : -52.8 dB relativo al total del ataque
+  RMS ataque       : -35.5 dBFS
+  Gain dinamico    : 0.00 dB (sin correccion)
+  Flutter ptp      : 10.5 dB  |  Re-emergencias: 0
+
+Nota 12: B_0_p.wav  f0=31.0 Hz (B0)    [FLUTTER 4.4dB ptp]
+  Dur total        : 31.05s
+  Centroide ataque : 1645 Hz
+  Centroide sustain: 452 Hz
+  Diferencia       : +1193 Hz (positivo = mas brillante en ataque)
+  Energia >8kHz    : -31.3 dB relativo al total del ataque
+  RMS ataque       : -31.8 dBFS
+  Gain dinamico    : 0.00 dB (sin correccion)
+  Flutter ptp      : 4.4 dB  |  Re-emergencias: 0
+
+============================================================
+INTERPRETACION — Octavas 3 y 4:
+
+El ruido de tecla (key mechanism noise) se manifiesta como:
+  - Centroide espectral en ataque significativamente mayor
+    que en sustain (diferencia positiva > 500 Hz)
+  - Energia en banda >8kHz elevada en el ataque (> -20 dB relativo)
+  - RMS de ataque desproporcionadamente alto respecto al sustain
+
+En octavas 3/4 la nota fundamental (130-260 Hz) ya no enmascara
+el ruido de mecanismo en 9-11 kHz — mientras que en C1/C2
+la energia de los armonicos graves domina y enmascara el click.
+
+Umbral aplicado: notas con f0 >= 130.0 Hz
+Atenuacion: -15 dB sobre 8000 Hz en los primeros 50ms
+
+============================================================
+INTERPRETACION — Flutter / Fluctuacion de sustain:
+
+FLUTTER (varianza alta): batimiento entre cuerdas ligeramente desafinadas.
+  Causa: cada tecla del piano tiene 2-3 cuerdas. Si estan ligeramente
+  desafinadas entre si, la interferencia de fase genera amplitud modulada.
+  Solucion: re-afinacion del piano en esas notas. El beating leve es
+  natural y puede ser deseable; beating severo (>6 dB ptp) puede ser
+  perceptible como inestabilidad de pitch en la biblioteca.
+
+REEMERGENCIA: el RMS sube abruptamente despues de haber decaido.
+  Causas posibles:
+    a) Resonancia simpatica de otra cuerda (uso del pedal de sustain)
+    b) Modo de sala que re-excita la frecuencia de la nota
+    c) Ruido externo captado durante el decay
+  Solucion recomendada: recorte manual del segmento en REAPER antes
+  del punto de re-emergencia, o re-grabacion de la nota.
+
+Umbral flutter: ptp > 2.5 dB
+Umbral re-emergencia: rise > 2.0 dB

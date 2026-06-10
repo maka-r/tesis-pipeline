@@ -1,0 +1,206 @@
+INFORME DE RUIDO RESIDUAL Y SNR -- pipeline_rectify.py
+================================================================================
+METODOLOGIA — Descomposicion en 3 componentes de ruido:
+  1. Piso electronico : RMS del segmento mas silencioso (mic + previo + AD)
+  2. Flutter cuerdas  : Contribucion estimada del beating entre cuerdas
+                        (caracteristica del instrumento patrimonial no afinable)
+  3. Ruido ambiental  : Diferencia entre RMS mediano y minimo de la cola
+                        (sala, HVAC, ambiente de grabacion)
+Tiers SNR: Excel>=70dB | Prof>=60dB | Consumer>=50dB | Marginal>=40dB
+================================================================================
+
+Archivo                     Nota  Elec_dBFS  Sala+dB  Flutt+dB  SNR_dB   Flat  MVSep  Tier
+----------------------------------------------------------------------------------------------------
+C_1_p.wav                     C1      -93.7     17.6       4.0    57.4 0.0643      0  CONSUMER
+C_2_p_RR1.wav                 C2      -93.7     26.7       7.4    66.8 0.0386      0  PROFESIONAL
+C_2_p_RR2.wav                 C2      -93.8     24.4       3.0    66.3 0.0285      0  PROFESIONAL
+C_3_p_RR1.wav                 C3      -93.7     18.7       2.8    59.6 0.0314      0  CONSUMER
+C_3_p_RR2.wav                 C3      -94.3     19.2       2.7    60.8 0.0452      0  PROFESIONAL
+C_3_p_RR3.wav                 C3      -94.0      3.6       2.7    60.4 0.0779      0  PROFESIONAL
+C_4_p_RR1.wav                 C4      -93.8     11.7       8.9    65.8 0.0174      0  PROFESIONAL
+C_4_p_RR2.wav                 C4      -94.0     21.3       7.3    64.6 0.0232      0  PROFESIONAL
+C_4_p_RR3.wav                 C4      -93.6      0.1      11.5    64.5 0.0053      0  PROFESIONAL
+B_0_p.wav                     B0      -93.6     25.5       2.2    61.8 0.0063      0  PROFESIONAL
+C_4_p.wav                     C4      -99.8      0.3       8.1    65.1 0.0312      0  PROFESIONAL
+C_5_p_RR1.wav                 C5      -96.1     10.1       3.8    74.1 0.0163      0  EXCELENTE
+C_5_p_RR2.wav                 C5      -94.5     19.6       6.6    73.4 0.0552      0  EXCELENTE
+C_5_p_RR3.wav                 C5      -97.2     25.9       8.1    73.8 0.0248      0  EXCELENTE
+C_5_p_RR4.wav                 C5      -93.7      0.1       6.7    62.6 0.0057      0  PROFESIONAL
+C_6_p_RR1.wav                 C6      -93.7      0.7       2.5    66.2 0.0208      0  PROFESIONAL
+C_6_p_RR2.wav                 C6      -94.3      1.0       2.8    68.1 0.0501      0  PROFESIONAL
+C_6_p_RR3.wav                 C6      -93.6      0.1       2.5    65.5 0.0119      0  PROFESIONAL
+C_7_p_RR1.wav                 C7      -93.6      0.1       6.0    60.4 0.0106      0  PROFESIONAL
+C_7_p_RR2.wav                 C7      -93.6      0.1       5.9    62.9 0.0107      0  PROFESIONAL
+C_7_p_RR3.wav                 C7      -93.6      0.0       5.3    58.1 0.0338      0  CONSUMER
+
+================================================================================
+NOTA CON MEJOR SNR (referencia de calidad):
+
+  Archivo    : C_5_p_RR1.wav
+  Nota       : C5
+  SNR        : 74.1 dB
+  Piso elec. : -96.1 dBFS
+  Tier       : EXCELENTE (>=70dB - tier VSL/Spitfire)
+
+  Referencia para futuras sesiones con nuevo setup M5 ORTF:
+  El SNR del set actual (CM25+AT3035, par hibrido SDC+LDC) servira
+  como baseline. El nuevo par matched M5 (EIN 19 dBA, matched SDC)
+  deberia mejorar flatness espectral y reducir ruido tonal de MVSep.
+  >> SNR >= 70dB: EXCELENTE (tier VSL/Spitfire).
+     Comparable a librerias de referencia. No requiere tratamiento adicional.
+
+  Ranking SNR (mayor a menor):
+   1. C_5_p_RR1.wav                 C5  SNR=74.1dB  Elec=-96.1dBFS  EXCELENTE
+   2. C_5_p_RR3.wav                 C5  SNR=73.8dB  Elec=-97.2dBFS  EXCELENTE
+   3. C_5_p_RR2.wav                 C5  SNR=73.4dB  Elec=-94.5dBFS  EXCELENTE
+   4. C_6_p_RR2.wav                 C6  SNR=68.1dB  Elec=-94.3dBFS  PROFESIONAL
+   5. C_2_p_RR1.wav                 C2  SNR=66.8dB  Elec=-93.7dBFS  PROFESIONAL
+   6. C_2_p_RR2.wav                 C2  SNR=66.3dB  Elec=-93.8dBFS  PROFESIONAL
+   7. C_6_p_RR1.wav                 C6  SNR=66.2dB  Elec=-93.7dBFS  PROFESIONAL
+   8. C_4_p_RR1.wav                 C4  SNR=65.8dB  Elec=-93.8dBFS  PROFESIONAL
+   9. C_6_p_RR3.wav                 C6  SNR=65.5dB  Elec=-93.6dBFS  PROFESIONAL
+  10. C_4_p.wav                     C4  SNR=65.1dB  Elec=-99.8dBFS  PROFESIONAL
+  11. C_4_p_RR2.wav                 C4  SNR=64.6dB  Elec=-94.0dBFS  PROFESIONAL
+  12. C_4_p_RR3.wav                 C4  SNR=64.5dB  Elec=-93.6dBFS  PROFESIONAL
+  13. C_7_p_RR2.wav                 C7  SNR=62.9dB  Elec=-93.6dBFS  PROFESIONAL
+  14. C_5_p_RR4.wav                 C5  SNR=62.6dB  Elec=-93.7dBFS  PROFESIONAL
+  15. B_0_p.wav                     B0  SNR=61.8dB  Elec=-93.6dBFS  PROFESIONAL
+  16. C_3_p_RR2.wav                 C3  SNR=60.8dB  Elec=-94.3dBFS  PROFESIONAL
+  17. C_7_p_RR1.wav                 C7  SNR=60.4dB  Elec=-93.6dBFS  PROFESIONAL
+  18. C_3_p_RR3.wav                 C3  SNR=60.4dB  Elec=-94.0dBFS  PROFESIONAL
+  19. C_3_p_RR1.wav                 C3  SNR=59.6dB  Elec=-93.7dBFS  CONSUMER
+  20. C_7_p_RR3.wav                 C7  SNR=58.1dB  Elec=-93.6dBFS  CONSUMER
+  21. C_1_p.wav                     C1  SNR=57.4dB  Elec=-93.7dBFS  CONSUMER
+
+================================================================================
+ANALISIS DE 3 COMPONENTES DE RUIDO:
+
+  Componente 1 — Piso electronico:
+    Ruido de captura (mic + previo + conversion). Valor tipico set actual: ~-93 dBFS.
+    Con nuevo setup M5 (EIN 19 dBA, Focusrite 18i20 122dB DR) se espera mejora
+    de 0.5-2 dBA respecto al par CM25+AT3035.
+
+  Componente 2 — Flutter de cuerdas (instrumento patrimonial):
+    NO es un artefacto de captura. Es el beating entre cuerdas desafinadas
+    del instrumento institucional que NO puede afinarse.
+    La estimacion (flutter_ptp/2) es aproximada; iZotope RX De-flutter
+    puede medir y corregir este componente con mayor precision.
+    NOTAS CRITICAS: C2_RR1, C4 x3, C5 x4, C7 x3 (>10 dB ptp).
+
+  Componente 3 — Ruido ambiental de sala:
+    Diferencia entre RMS mediano y minimo de la cola de la nota.
+    Valor 0 dB = sala muy silenciosa o nota sin cola util.
+    El CM25 usado como microfono de sala (1-1.5m, lateral) en el nuevo
+    setup provee referencia independiente del piso ambiental.
+
+  Archivo                     Elec_dBFS  Sala+dB  Flutt_est+dB  Planitud_MVSep
+  ---------------------------------------------------------------------------
+  C_1_p.wav                       -93.7     17.6           4.0  Algo tonal
+  C_2_p_RR1.wav                   -93.7     26.7           7.4  Muy tonal (MVSep dominante)
+  C_2_p_RR2.wav                   -93.8     24.4           3.0  Muy tonal (MVSep dominante)
+  C_3_p_RR1.wav                   -93.7     18.7           2.8  Muy tonal (MVSep dominante)
+  C_3_p_RR2.wav                   -94.3     19.2           2.7  Muy tonal (MVSep dominante)
+  C_3_p_RR3.wav                   -94.0      3.6           2.7  Algo tonal
+  C_4_p_RR1.wav                   -93.8     11.7           8.9  Muy tonal (MVSep dominante)
+  C_4_p_RR2.wav                   -94.0     21.3           7.3  Muy tonal (MVSep dominante)
+  C_4_p_RR3.wav                   -93.6      0.1          11.5  Muy tonal (MVSep dominante)
+  B_0_p.wav                       -93.6     25.5           2.2  Muy tonal (MVSep dominante)
+  C_4_p.wav                       -99.8      0.3           8.1  Muy tonal (MVSep dominante)
+  C_5_p_RR1.wav                   -96.1     10.1           3.8  Muy tonal (MVSep dominante)
+  C_5_p_RR2.wav                   -94.5     19.6           6.6  Algo tonal
+  C_5_p_RR3.wav                   -97.2     25.9           8.1  Muy tonal (MVSep dominante)
+  C_5_p_RR4.wav                   -93.7      0.1           6.7  Muy tonal (MVSep dominante)
+  C_6_p_RR1.wav                   -93.7      0.7           2.5  Muy tonal (MVSep dominante)
+  C_6_p_RR2.wav                   -94.3      1.0           2.8  Algo tonal
+  C_6_p_RR3.wav                   -93.6      0.1           2.5  Muy tonal (MVSep dominante)
+  C_7_p_RR1.wav                   -93.6      0.1           6.0  Muy tonal (MVSep dominante)
+  C_7_p_RR2.wav                   -93.6      0.1           5.9  Muy tonal (MVSep dominante)
+  C_7_p_RR3.wav                   -93.6      0.0           5.3  Muy tonal (MVSep dominante)
+
+================================================================================
+HUM DETECTADO EN COLA DE NOTA:
+  ATENCION: Frecuencias 250/300 Hz pueden ser parciales residuales del piano
+  (inarmónicidad natural de cuerdas graves) y NO hum electrico.
+  Verificar en espectrograma si la energia es estacionaria (hum real)
+  o decae con la nota (parcial residual -> NO aplicar notch).
+
+  C_2_p_RR1.wav                 Frecuencias: [250] Hz
+  C_2_p_RR2.wav                 Frecuencias: [250] Hz
+  C_4_p_RR1.wav                 Frecuencias: [250] Hz
+  B_0_p.wav                     Frecuencias: [300] Hz
+
+  Si se confirma hum electrico:
+  1. Verificar toma de tierra de la interfaz Focusrite 18i20 y del previo.
+  2. ReaEQ: notch de alta Q (Q=20-30) en cada frecuencia detectada.
+  3. iZotope RX Hum Removal: extrae fundamental + armonicos automaticamente.
+
+================================================================================
+ARTEFACTOS INCIDENTALES EN FORMA DE ONDA:
+
+  C_1_p.wav (C1):
+    [!] RUMBLE_LF (energia <20Hz = -21.4dB relativo al total)
+        Abordaje: HP a 20 Hz (24 dB/oct) en REAPER o Kontakt Group Insert.
+        No afecta contenido musical (f0 minimo del set >30 Hz).
+
+  C_2_p_RR1.wav (C2):
+    [!] RUMBLE_LF (energia <20Hz = -31.2dB relativo al total)
+        Abordaje: HP a 20 Hz (24 dB/oct) en REAPER o Kontakt Group Insert.
+        No afecta contenido musical (f0 minimo del set >30 Hz).
+
+  C_2_p_RR2.wav (C2):
+    [!] RUMBLE_LF (energia <20Hz = -30.4dB relativo al total)
+        Abordaje: HP a 20 Hz (24 dB/oct) en REAPER o Kontakt Group Insert.
+        No afecta contenido musical (f0 minimo del set >30 Hz).
+
+  C_4_p_RR1.wav (C4):
+    [!] RUMBLE_LF (energia <20Hz = -34.7dB relativo al total)
+        Abordaje: HP a 20 Hz (24 dB/oct) en REAPER o Kontakt Group Insert.
+        No afecta contenido musical (f0 minimo del set >30 Hz).
+
+  C_4_p_RR2.wav (C4):
+    [!] RUMBLE_LF (energia <20Hz = -32.2dB relativo al total)
+        Abordaje: HP a 20 Hz (24 dB/oct) en REAPER o Kontakt Group Insert.
+        No afecta contenido musical (f0 minimo del set >30 Hz).
+
+  C_4_p_RR3.wav (C4):
+    [!] RUMBLE_LF (energia <20Hz = -32.2dB relativo al total)
+        Abordaje: HP a 20 Hz (24 dB/oct) en REAPER o Kontakt Group Insert.
+        No afecta contenido musical (f0 minimo del set >30 Hz).
+
+  B_0_p.wav (B0):
+    [!] RUMBLE_LF (energia <20Hz = -39.3dB relativo al total)
+        Abordaje: HP a 20 Hz (24 dB/oct) en REAPER o Kontakt Group Insert.
+        No afecta contenido musical (f0 minimo del set >30 Hz).
+
+  C_4_p.wav (C4):
+    [!] RUMBLE_LF (energia <20Hz = -39.0dB relativo al total)
+        Abordaje: HP a 20 Hz (24 dB/oct) en REAPER o Kontakt Group Insert.
+        No afecta contenido musical (f0 minimo del set >30 Hz).
+
+  C_5_p_RR2.wav (C5):
+    [!] RUMBLE_LF (energia <20Hz = -36.9dB relativo al total)
+        Abordaje: HP a 20 Hz (24 dB/oct) en REAPER o Kontakt Group Insert.
+        No afecta contenido musical (f0 minimo del set >30 Hz).
+
+  C_5_p_RR4.wav (C5):
+    [!] RUMBLE_LF (energia <20Hz = -36.3dB relativo al total)
+        Abordaje: HP a 20 Hz (24 dB/oct) en REAPER o Kontakt Group Insert.
+        No afecta contenido musical (f0 minimo del set >30 Hz).
+
+
+================================================================================
+IMPACTO DEL NUEVO SETUP M5 EN EL PIPELINE:
+
+  Las nuevas grabaciones con Rode M5 (ORTF, matched SDC) produciran archivos
+  con distinto timbre respecto a las sesiones p/ff existentes (par hibrido).
+  Estrategia documentada en tesis:
+  - NO intentar igualar color timbrico entre setups.
+  - Usar pipeline_compare.py con SESSION_METADATA para cuantificar la diferencia
+    espectral como resultado medible de la investigacion.
+  - El cambio de setup esta justificado por mejora en SNR, matched imaging
+    y eliminacion de la asimetria timbrica L/R (CM25 SDC + AT3035 LDC).
+
+  Parametros a ajustar para nuevas sesiones _UNA (una corda):
+  - KNR: 8 dB (vs 10 dB normal) — sordina atenua HF fisicamente.
+  - LEVEL_MAX_BOOST: +12.0 dB (vs +8.0 dB normal) — nivel inherentemente menor.
+  - NOISE_WINDOW: 15% de duracion para _SP (sin pedal).
